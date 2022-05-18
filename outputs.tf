@@ -1,10 +1,15 @@
-output "db_admin_secret_name" {
-  value       = aws_secretsmanager_secret.admin.name
-  description = "string ||| The name of the secret in AWS Secrets Manager containing the admin credentials"
+output "db_admin_secret_id" {
+  value       = aws_secretsmanager_secret.admin.id
+  description = "string ||| The ID of the secret in AWS Secrets Manager containing admin credentials"
+}
+
+output "db_protocol" {
+  value       = "amqps"
+  description = "string ||| This emits `amqps` to indicate amqp over ssl."
 }
 
 output "db_endpoints" {
-  value       = [for instance in aws_mq_broker.this.instances : instance.endpoints[0]]
+  value       = local.endpoints
   description = "list(string) ||| The endpoint URLs to access the RabbitMQ instance. (Endpoint format: amqps://broker-id.mq.us-west-2.amazonaws.com:5671)"
 }
 
