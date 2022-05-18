@@ -3,6 +3,11 @@ output "db_admin_secret_name" {
   description = "string ||| The name of the secret in AWS Secrets Manager containing the admin credentials"
 }
 
+output "db_endpoints" {
+  value       = [for instance in aws_mq_broker.this.instances : instance.endpoints[0]]
+  description = "list(string) ||| The endpoint URLs to access the RabbitMQ instance. (Endpoint format: amqps://broker-id.mq.us-west-2.amazonaws.com:5671)"
+}
+
 output "db_security_group_id" {
   value       = aws_security_group.this.id
   description = "string ||| The ID of the security group attached to the RabbitMQ instance."
