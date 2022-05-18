@@ -1,6 +1,6 @@
 variable "engine_version" {
   type        = string
-  default     = "3.9"
+  default     = "3.9.13"
   description = <<EOF
 Configure the engine version of RabbitMQ.
 See https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/rabbitmq-version-management.html
