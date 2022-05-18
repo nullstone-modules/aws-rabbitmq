@@ -18,7 +18,7 @@ resource "aws_mq_broker" "this" {
   tags                       = local.tags
 
   encryption_options {
-    kms_key_id        = aws_kms_key.this.id
+    kms_key_id        = aws_kms_key.this.arn
     use_aws_owned_key = false
   }
 
