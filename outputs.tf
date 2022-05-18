@@ -9,11 +9,11 @@ output "db_security_group_id" {
 }
 
 output "db_log_group" {
-  value       = aws_cloudwatch_log_group.general.name
+  value       = local.general_log_group_name
   description = "string ||| The name of the Cloudwatch Log Group where rabbitmq logs are emitted"
 }
 
 output "db_connection_log_group" {
-  value       = aws_cloudwatch_log_group.connection.name
+  value       = local.connection_log_group_name
   description = "string ||| The name of the Cloudwatch Log Group where connection logs are emitted"
 }
