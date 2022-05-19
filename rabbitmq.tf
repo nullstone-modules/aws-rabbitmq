@@ -4,6 +4,7 @@ locals {
 }
 
 resource "aws_mq_broker" "this" {
+  #bridgecrew:skip=CKV_AWS_209: Skipping "Ensuring MQ broker encrypted". Encryption is not supported when engine_type="RabbitMQ"
   broker_name                = local.resource_name
   deployment_mode            = local.deployment_mode
   engine_type                = "RabbitMQ"
@@ -20,6 +21,9 @@ resource "aws_mq_broker" "this" {
   logs {
     general = true
   }
+
+  // NOTE: "encryptionOptions is not supported for RabbitMQ brokers"
+  // encryption_options {}
 
   maintenance_window_start_time {
     day_of_week = var.maintenance_window.day_of_week
