@@ -1,11 +1,13 @@
 org_name: nullstone
-name: aws-rabbitmq
-friendly_name: RabbitMQ Cluster
+name: aws-rabbitmq-amazonmq
+friendly_name: RabbitMQ Amazon MQ
 description: Creates a RabbitMQ cluster using AmazonMQ
 category: datastore
-type: rabbitmq/aws
-appCategories: []
-layer: database
-is_public: true
+subcategory: ""
 provider_types:
     - aws
+platform: rabbitmq
+subplatform: amazonmq
+type: rabbitmq/aws
+appCategories: []
+is_public: true
