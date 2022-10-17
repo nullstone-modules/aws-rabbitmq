@@ -27,3 +27,8 @@ output "db_connection_log_group" {
   value       = local.connection_log_group_name
   description = "string ||| The name of the Cloudwatch Log Group where connection logs are emitted"
 }
+
+output "db_console_urls" {
+  value       = local.console_urls
+  description = "list(string) ||| The URLs to access the RabbitMQ web console. (Format: https://broker-id.mq.us-west-2.amazonaws.com)"
+}

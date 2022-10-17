@@ -4,9 +4,12 @@ locals {
 }
 
 locals {
-  // raw_endpoints holds a single array of all endpoints of the format `amqps://amqps://broker-id.mq.us-west-2.amazonaws.com:5671`
+  // raw_endpoints holds a single array of all endpoints of the format `amqps://broker-id.mq.us-west-2.amazonaws.com:5671`
   raw_endpoints = [for instance in aws_mq_broker.this.instances : instance.endpoints[0]]
 
   // endpoints is a list of endpoints with only the url authority (no scheme or user info)
   endpoints = [for url in local.raw_endpoints : lookup(regex(local.uri_matcher, url), "authority")]
+
+  // console_urls holds a single array of all console urls `https://broker-id.mq.us-west-2.amazonaws.com`
+  console_urls = [for instance in aws_mq_broker.this.instances : instance.console_url]
 }
